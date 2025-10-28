@@ -5,28 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pablalva <pablalva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/28 14:51:15 by pablalva          #+#    #+#             */
-/*   Updated: 2025/10/28 17:57:24 by pablalva         ###   ########.fr       */
+/*   Created: 2025/10/28 17:54:36 by pablalva          #+#    #+#             */
+/*   Updated: 2025/10/28 17:59:19 by pablalva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "easyfind.hpp"
-#include <vector>
-#include <iostream>
-
-int main() {
-    std::vector<int> vec;
-	for (size_t i = 0; i < 10; i++)
+#include "Span.hpp"
+int main()
+{
+	try
 	{
-		vec.push_back(i + 1);
-		std::cout << "value of vector in position "<< i << " -> " << vec.at(i) << std::endl;
+		Span sp = Span(5);
+		sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
 	}
-    try {
-        std::vector<int>::iterator it = easyfind(vec, 9);
-        std::cout << "Encontrado: " << *it << std::endl;
-		it = easyfind(vec, 15);
-    } catch (const std::exception &e) {
-        std::cerr << e.what() << std::endl;
-    }
-	return(0);
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+	return 0;
 }
